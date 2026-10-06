@@ -1,0 +1,31 @@
+{
+  "name": "fitness-platform-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Full-stack fitness tracking platform with workouts, nutrition, progress analytics and REST API integration.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "lint": "eslint frontend scripts tests vite.config.js playwright.config.js",
+    "test": "node --test tests/unit/*.test.js",
+    "test:e2e": "playwright test",
+    "api:dev": "node scripts/start-backend.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@eslint/js": "^10.0.0",
+    "@playwright/test": "^1.63.0",
+    "eslint": "^10.0.0",
+    "globals": "^17.0.0",
+    "prettier": "^3.9.9",
+    "sass": "^1.97.0",
+    "vite": "^8.0.0"
+  }
+}

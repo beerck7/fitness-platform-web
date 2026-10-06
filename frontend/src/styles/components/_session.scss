@@ -1,0 +1,131 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.modal--session {
+  max-width: 740px;
+}
+.session-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  > span:last-child {
+    color: v.$muted;
+    font-size: 14px;
+  }
+}
+.session-description {
+  color: v.$muted;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.session-checklist {
+  display: grid;
+  gap: 10px;
+}
+.form .session-exercise {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid v.$line;
+  border-radius: 11px;
+  padding: 15px 12px;
+  min-height: 78px;
+  &:has(input:checked) {
+    background: v.$tinted;
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+  &:has(input:focus-visible) {
+    outline: 3px solid v.$primary-text;
+    outline-offset: 3px;
+  }
+  &__number {
+    font-size: 14px;
+    color: v.$muted;
+    font-variant-numeric: tabular-nums;
+  }
+  &__details {
+    flex: 1;
+    min-width: 0;
+    strong {
+      font-size: 13px;
+      display: block;
+      overflow-wrap: anywhere;
+    }
+    > span {
+      display: block;
+      color: v.$muted;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  }
+  input {
+    position: absolute;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    min-height: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  &__check {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 1px solid #aeb4c7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+    background: v.$input;
+  }
+  input:checked + .session-exercise__check {
+    color: white;
+    border-color: v.$primary-hover;
+    background: v.$primary-hover;
+  }
+}
+.session-finish {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 15px;
+  border-top: 1px solid v.$line;
+  > div {
+    flex: 1;
+  }
+  p {
+    font-size: 14px;
+    color: v.$muted;
+    margin-bottom: 9px;
+  }
+  .button {
+    align-self: stretch;
+  }
+  button:disabled {
+    cursor: default;
+  }
+}
+@include m.tablet {
+  .session-finish {
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  .form .session-exercise {
+    padding: 18px;
+    gap: 18px;
+    &__details strong {
+      font-size: 15px;
+    }
+    input {
+      right: 18px;
+    }
+  }
+}

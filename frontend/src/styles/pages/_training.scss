@@ -1,0 +1,320 @@
+@use '../abstracts/variables' as v;
+
+.schedule-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  h2 {
+    font-size: 16px;
+  }
+}
+.schedule-layout {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+.schedule-library {
+  padding: 20px;
+  align-self: start;
+  h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  > input {
+    width: 100%;
+    background: v.$input;
+    border: 1px solid v.$line;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 16px 0;
+  }
+  > div {
+    display: grid;
+    gap: 8px;
+    max-height: 420px;
+    overflow-y: auto;
+  }
+}
+.schedule-calendar {
+  min-width: 0;
+  overflow: hidden;
+  &__mobile-day {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 16px;
+    font-size: 14px;
+    select {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid v.$line;
+      border-radius: 10px;
+      background: v.$surface;
+    }
+  }
+  &__scroll {
+    max-height: 700px;
+    overflow: auto;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+  }
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    background: v.$surface;
+    border-bottom: 1px solid v.$line;
+  }
+  &__hours {
+    font-size: 12px;
+    color: v.$muted;
+    span {
+      display: block;
+      height: 60px;
+      padding: 5px 4px;
+      text-align: center;
+    }
+  }
+}
+.schedule-day {
+  display: none;
+  min-width: 0;
+  border-left: 1px solid v.$line;
+  &--selected {
+    display: block;
+  }
+  &__timeline {
+    height: var(--calendar-height);
+    position: relative;
+    background: repeating-linear-gradient(to bottom, transparent 0 59px, v.$line 59px 60px);
+    cursor: pointer;
+  }
+}
+.schedule-event {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  z-index: 1;
+  padding: 6px;
+  background: #ede9ff;
+  color: v.$primary-text;
+  border: 1px solid v.$primary;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+  strong,
+  span {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+  strong {
+    font-weight: 500;
+  }
+  span {
+    margin-top: 3px;
+    font-size: 11px;
+  }
+  &--completed {
+    background: #e7f5ef;
+    color: v.$success;
+    border-color: v.$success;
+  }
+}
+@media (min-width: 768px) {
+  .schedule-calendar__mobile-day {
+    display: none;
+  }
+  .schedule-calendar__grid {
+    min-width: 820px;
+    grid-template-columns: 48px repeat(7, minmax(0, 1fr));
+  }
+  .schedule-day {
+    display: block;
+  }
+}
+@media (min-width: 1200px) {
+  .schedule-layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+}
+
+.training-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid v.$line;
+  border-radius: 16px;
+  background: v.$surface;
+  margin-bottom: 24px;
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: v.$muted;
+    border-radius: 12px;
+    min-height: 62px;
+    padding: 7px 0;
+    span {
+      font-size: 12px;
+    }
+    strong {
+      font-size: 20px;
+      color: v.$ink;
+    }
+    &:hover {
+      background: v.$input;
+    }
+    &[aria-pressed='true'] {
+      background: v.$tinted;
+      border-color: v.$primary;
+      color: v.$primary-text;
+    }
+  }
+  &__all {
+    grid-column: 1 / -1;
+    min-height: 40px !important;
+    font-size: 14px;
+  }
+}
+.training-list {
+  display: grid;
+  gap: 32px;
+  &__group {
+    min-width: 0;
+  }
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 20px;
+    padding-bottom: 18px;
+    > span {
+      font-size: 13px;
+      font-weight: 400;
+      color: v.$muted;
+    }
+  }
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 24px;
+  }
+}
+.workout-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  min-height: 380px;
+  padding: 24px;
+  gap: 20px;
+  background: v.$surface;
+  border: 1px solid v.$line;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px -10px rgba(37, 28, 70, 0.05);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  &:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 12px 28px rgba(37, 28, 70, 0.07);
+  }
+  &__date {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    color: v.$primary-text;
+    strong {
+      font-size: 30px;
+    }
+    > span {
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 13px;
+    }
+  }
+  &__body {
+    min-width: 0;
+    margin-top: auto;
+  }
+  &__heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: v.$muted;
+    > span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+  &__routine {
+    color: v.$muted;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+  }
+  &__tools {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    .text-link {
+      min-height: 38px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      margin-right: auto;
+      font-size: 13px;
+    }
+    .icon-button {
+      min-width: 34px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .training-days {
+    grid-template-columns: 1.25fr repeat(7, minmax(0, 1fr));
+    gap: 9px;
+    padding: 16px;
+    &__all {
+      grid-column: auto;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+**/bin/
+**/obj/
+**/data/
+**/*.db*
+**/appsettings.Local.json
+.env*
+!.env.example
+*.log
+.vs/
+playwright-report/
+test-results/
