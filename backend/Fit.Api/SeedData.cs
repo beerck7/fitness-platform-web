@@ -53,7 +53,7 @@ public static class SeedData
                 existing.Category = sample.Value.Category;
             }
         }
-        // Existing IDs and all workout/diary references remain intact.
+        // Zachowujemy identyfikatory i powiązania istniejących treningów oraz wpisów.
         await db.SaveChangesAsync();
     }
 

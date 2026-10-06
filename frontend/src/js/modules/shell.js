@@ -235,7 +235,7 @@ export async function syncShellProfile(signal) {
     const profile = await api.profile({ signal });
     if (!signal.aborted) updateShellProfile(profile);
   } catch {
-    // Optional sidebar identity must not replace a feature view's error/retry UI.
+    // Błąd danych profilu w menu nie powinien zastępować komunikatu bieżącego widoku.
   }
 }
 

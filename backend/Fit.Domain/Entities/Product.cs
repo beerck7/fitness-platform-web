@@ -16,7 +16,7 @@ namespace Fit.Domain.Entities
         public string? Brand { get; set; }
         public string? Category { get; set; }   // np. „Nabiał”, „Pieczywo”
 
-        // Kto to stworzył
+        // Właściciel produktu.
         public Guid? OwnerUserId { get; set; }  // null = produkt globalny
         public bool IsPublic { get; set; }      // widoczny dla wszystkich
 
@@ -43,7 +43,7 @@ namespace Fit.Domain.Entities
         public string? ExternalId { get; set; }         // np. OFF używa barcode jako id
         public DateTimeOffset? ExternalSyncedAtUtc { get; set; }
 
-        // Surowy JSON z OFF (jak chcesz mieć pełne dane do debugów / migracji)
+        // Dane źródłowe OpenFoodFacts.
         public string? ExternalRawJson { get; set; }
 
         // Nawigacje

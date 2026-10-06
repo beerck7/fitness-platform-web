@@ -1,4 +1,4 @@
-using FIt.Application.Products.Queries;
+using Fit.Application.Products.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -50,7 +50,7 @@ namespace Fit.Infrastructure.Repositories
             _fitDbContext.UserGoals.Remove(goal);
         }
 
-        // Przy 1 rekordzie celu na usera to jest najbardziej użyteczne
+        // Każdy użytkownik ma jeden zestaw celów.
         public async Task<UserGoal> UpsertByUserIdAsync(UserGoal goal, CancellationToken ct = default)
         {
             var existing = await _fitDbContext.UserGoals

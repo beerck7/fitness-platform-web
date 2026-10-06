@@ -4,8 +4,8 @@ namespace Fit.Infrastructure.Persistance;
 
 public static class DatabaseUpdates
 {
-    // EnsureCreated does not add tables to an existing SQLite database.
-    // This additive update keeps previously saved accounts and training data.
+    // EnsureCreated nie dodaje tabel do istniejącej bazy SQLite.
+    // Dodajemy tabelę bez usuwania zapisanych kont i treningów.
     public static async Task AddFriendshipsAsync(FitDbContext db)
     {
         await db.Database.ExecuteSqlRawAsync("""

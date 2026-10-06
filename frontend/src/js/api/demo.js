@@ -228,14 +228,14 @@ export function createDemoFetch({ storage = globalThis.localStorage, latency = 0
   } catch {
     data = createDemoData();
   }
-  // Extend older demo saves without resetting workouts, meals or profile data.
+  // Uzupełniamy starsze zapisy demo bez usuwania treningów, posiłków i profilu.
   if (!Array.isArray(data.people)) data.people = createDemoData().people;
   if (!Array.isArray(data.friendships)) data.friendships = createDemoData().friendships;
   function save() {
     try {
       storage?.setItem(KEY, JSON.stringify({ version: 2, data }));
     } catch {
-      /* Demo remains usable in memory when storage is blocked. */
+      /* Przy zablokowanym localStorage demo działa w pamięci. */
     }
   }
   function respond(payload, status = 200) {
@@ -328,7 +328,7 @@ export function createDemoFetch({ storage = globalThis.localStorage, latency = 0
     if (path === '/Account/register' || path === '/Account/login') {
       data.profile.name = body.name || data.profile.name;
       if (body.email) data.profile.email = body.email;
-      // This is a preview interaction. No password is stored and no real JWT is created.
+      // Logowanie demo nie zapisuje hasła ani nie tworzy tokenu JWT.
       save();
       return respond({ accessToken: null, userName: data.profile.name, demo: true });
     }

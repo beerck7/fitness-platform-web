@@ -25,7 +25,7 @@ namespace Fit.Api.Controllers
             if (!Guid.TryParse(userIdString, out var userId)) return Unauthorized();
 
             command.UserId = userId;
-            // Default current date if not provided
+            // Bez podanej daty zapisujemy pomiar na dziś.
             if (command.DateRecorded == default) command.DateRecorded = DateTime.UtcNow;
 
             await sender.Send(command);

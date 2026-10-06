@@ -15,6 +15,5 @@ namespace Fit.Domain.Entities
         public MuscleGroup MuscleGroup { get; set; } = null!;
 
         public ICollection<WorkoutExercise> WorkoutExercises { get; set; } = new List<WorkoutExercise>();
-        //public ICollection<ExerciseSet> ExerciseSets { get; set; } = new List<ExerciseSet>();
     }
 }

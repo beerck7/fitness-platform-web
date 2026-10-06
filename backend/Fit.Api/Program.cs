@@ -1,6 +1,6 @@
 using Fit.Infrastructure.Extensions;
 using Fit.Infrastructure.Persistance;
-using FIt.Application.Extensions;
+using Fit.Application.Extensions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;

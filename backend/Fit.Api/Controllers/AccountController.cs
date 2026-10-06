@@ -1,7 +1,7 @@
 using MediatR;
-using FIt.Application.Account.DTOs;
-using FIt.Application.Account.Commands.LoginUser;
-using FIt.Application.Account.Commands.RegisterUser;
+using Fit.Application.Account.DTOs;
+using Fit.Application.Account.Commands.LoginUser;
+using Fit.Application.Account.Commands.RegisterUser;
 using Fit.Application.Account.Commands.ChangePassword;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

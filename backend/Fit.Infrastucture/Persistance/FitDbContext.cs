@@ -43,7 +43,7 @@ public class FitDbContext : DbContext, IFitDbContext
         modelBuilder.Entity<Friendship>().HasOne(item => item.Addressee).WithMany()
             .HasForeignKey(item => item.AddresseeId).OnDelete(DeleteBehavior.Restrict);
 
-        // To mówi bazie: "Zawsze miej te dane na start"
+        // Początkowe grupy mięśniowe i definicje mikroskładników.
         modelBuilder.Entity<MuscleGroup>().HasData(
             new MuscleGroup { Id = 1, Name = "Klatka piersiowa", Description = "Chest" },
             new MuscleGroup { Id = 2, Name = "Plecy", Description = "Back" },
@@ -84,7 +84,7 @@ public class FitDbContext : DbContext, IFitDbContext
 );
 
 
-        // Meal configuration
+        // Relacje dania.
         modelBuilder.Entity<Meal>()
             .HasOne(m => m.User)
             .WithMany()
@@ -97,14 +97,14 @@ public class FitDbContext : DbContext, IFitDbContext
             .HasForeignKey(i => i.MealId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // MealIngredient configuration
+        // Relacje składnika dania.
         modelBuilder.Entity<MealIngredient>()
             .HasOne(i => i.Product)
             .WithMany()
             .HasForeignKey(i => i.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // FoodDiaryEntry configuration
+        // Relacje wpisu w dzienniku.
         modelBuilder.Entity<FoodDiaryEntry>()
             .HasOne(e => e.User)
             .WithMany()

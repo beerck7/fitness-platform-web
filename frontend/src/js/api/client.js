@@ -98,9 +98,9 @@ export function createApiClient({
         try {
           json = await response.json();
         } catch {
-          /* Some errors have no response body. */
+          /* Niektóre błędy nie zawierają treści odpowiedzi. */
         }
-        // A rejected sign-in is not an expired authenticated session.
+        // Błędne dane logowania nie oznaczają wygaśnięcia bieżącej sesji.
         if (response.status === 401 && token) onUnauthorized();
         throw new ApiError(responseMessage(json, response.status, Boolean(token)), response.status);
       }

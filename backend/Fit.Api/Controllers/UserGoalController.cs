@@ -1,6 +1,6 @@
-using FIt.Application.UserGoals.Commands.DeleteUserGoals;
-using FIt.Application.UserGoals.DTOs;
-using FIt.Application.UserGoals.Queries.GetUserGoals;
+using Fit.Application.UserGoals.Commands.DeleteUserGoals;
+using Fit.Application.UserGoals.DTOs;
+using Fit.Application.UserGoals.Queries.GetUserGoals;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

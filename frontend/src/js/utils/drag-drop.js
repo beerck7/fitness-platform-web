@@ -1,4 +1,4 @@
-// Native dragging plus ordinary buttons keep the same actions available on touchscreens.
+// Przyciski udostępniają te same działania co przeciąganie, także na ekranach dotykowych.
 export function mountDragDrop(root, onDrop) {
   let draggedId = null;
   function clear() {

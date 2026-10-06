@@ -69,7 +69,7 @@ namespace Fit.Infrastructure.Repositories
 
             if (endDate.HasValue)
             {
-                // Include the entire end day
+                // Uwzględniamy cały ostatni dzień zakresu.
                 var end = endDate.Value.Date.AddDays(1).AddTicks(-1);
                 query = query.Where(w => w.WorkoutDate <= end);
             }

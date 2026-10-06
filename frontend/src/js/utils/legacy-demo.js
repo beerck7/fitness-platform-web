@@ -1,4 +1,4 @@
-// Only unchanged, built-in English demo text is migrated; user edits and IDs are preserved.
+// Tłumaczymy tylko niezmienione dane startowe; zachowujemy edycje użytkownika i identyfikatory.
 const legacy = {
   exercises: [
     {
